@@ -1,5 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### `npm install @material-ui/core`
+
+### `npm install @material-ui/icons`
+
+### `npm install react-quill`
+
+### `npm install firebase`
+
 ## Available Scripts
 
 In the project directory, you can run:
