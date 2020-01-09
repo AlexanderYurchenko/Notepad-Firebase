@@ -5,7 +5,7 @@ const styles = theme => ({
       position: 'absolute',
       left: '0',
       width: '300px',
-      boxShadow: '0px 0px 2px black'
+      boxShadow: '0 0 2px black'
     },
     newChatBtn: {
       borderRadius: '0px'
@@ -33,8 +33,9 @@ const styles = theme => ({
       height: '100%',
       boxSizing: 'border-box',
       float: 'left',
-      overflowY: 'scroll',
-      overflowX: 'hidden'
+      overflow: 'auto',
+      overflowX: 'hidden',
+      borderRight: '1px solid rgba(0, 0, 0, 0.12)'
     },
     newNoteInput: {
       width: '100%',

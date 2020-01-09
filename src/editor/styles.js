@@ -5,7 +5,7 @@ const styles = theme => ({
       position: 'absolute',
       left: '0',
       width: '300px',
-      boxShadow: '0px 0px 2px black'
+      boxShadow: '0 0 2px black'
     },
     titleInput: {
       height: '50px',
@@ -28,7 +28,9 @@ const styles = theme => ({
     },
     editorContainer: {
       height: '100%',
-      boxSizing: 'border-box'
+      boxSizing: 'border-box',
+      margin: '0 0 0 300px',
+      padding: '20px'
     }
   });
   

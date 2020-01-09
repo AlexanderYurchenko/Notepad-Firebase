@@ -24,10 +24,13 @@ class SidebarItemComponent extends React.Component {
         <ListItem
           className={classes.listItem}
           selected={selectedNoteIndex === _index}
+          
           alignItems='flex-start'>
-            <div 
-              className={classes.textSection}
+            <div className={classes.underlay}
               onClick={() => this.selectNote(_note, _index)}>
+            </div>
+            <div 
+              className={classes.textSection}>
                 <ListItemText
                   primary={_note.title}
                   secondary={removeHTMLTags(_note.body.substring(0, 30)) + '...'}>
