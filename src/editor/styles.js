@@ -13,15 +13,16 @@ const styles = theme => ({
       border: 'none',
       padding: '5px',
       fontSize: '24px',
-      width: 'calc(100% - 300px)',
+      width: '100%',
       backgroundColor: '#29487d',
       color: 'white',
-      paddingLeft: '50px'
+      paddingLeft: '50px',
+      marginBottom: '20px'
     },
     editIcon: {
       position: 'absolute',
-      left: '310px',
-      top: '12px',
+      left: '332px',
+      top: '33px',
       color: 'white',
       width: '10',
       height: '10'

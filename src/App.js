@@ -60,6 +60,9 @@ class App extends React.Component {
 
   deleteNote = async (note) => {
     const noteIndex = this.state.notes.indexOf(note);
+    await this.setState({
+      notes: this.state.notes.filter(_note => _note !== note)
+    })
     if (this.state.selectedNoteIndex === noteIndex) {
       this.setState({ 
         selectedNote: null,
@@ -73,10 +76,6 @@ class App extends React.Component {
         selectedNoteIndex: null
       })
     } 
-
-    this.setState({
-      notes: this.state.notes.filter(_note => _note !== note)
-    })
 
     firebase
       .firestore()
@@ -105,7 +104,6 @@ class App extends React.Component {
           ></EditorComponent>
           : null
         }
-
       </div>
     );
   }
@@ -120,7 +118,7 @@ class App extends React.Component {
           data['id'] = _doc.id;
           return data;
         });
-        console.log(notes);
+        // console.log(notes);
         this.setState({ notes: notes })
       });
   }

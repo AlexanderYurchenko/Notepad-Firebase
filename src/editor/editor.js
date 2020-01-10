@@ -15,6 +15,7 @@ class EditorComponent extends React.Component {
     super();
     this.state = {
       editorState: EditorState.createEmpty(),
+      title: null,
       id: ''
     }
   };
@@ -34,6 +35,7 @@ class EditorComponent extends React.Component {
     );
     this.setState({
       editorState: EditorState.createWithContent(content),
+      title: this.props.selectedNote.title,
       id: this.props.selectedNote.id
     })
   };
@@ -47,6 +49,7 @@ class EditorComponent extends React.Component {
       );
       this.setState({
         editorState: EditorState.createWithContent(content),
+        title: this.props.selectedNote.title,
         id: this.props.selectedNote.id
       })
     }
@@ -68,13 +71,13 @@ class EditorComponent extends React.Component {
 
   render() { 
     const { classes } = this.props;
-    const { editorState } = this.state;
+    const { editorState, title } = this.state;
     return (
       <div className={classes.editorContainer}>
         <BorderColorIcon className={classes.editIcon}></BorderColorIcon>
         <input className={classes.titleInput}
           placeholder='Note title'
-          value={this.state.title ? this.state.title : ''}
+          value={title ? title : ''}
           onChange={(e) => this.updateTitle(e.target.value)}/>
         <Editor
           wrapperClassName="DraftWrapper"

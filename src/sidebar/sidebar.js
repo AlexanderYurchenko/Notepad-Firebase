@@ -11,7 +11,7 @@ class SidebarComponent extends React.Component {
     this.state = {
       title: null,
       addingNote: false      
-    }
+    };
   }
 
   newNoteBtnClick = () => {
@@ -55,17 +55,19 @@ class SidebarComponent extends React.Component {
           </Button>
           {
             this.state.addingNote ? 
-            <div>
-              <input type="text"
-                className={classes.newNoteInput}
-                placeholder="Enter note title"
-                onKeyUp={(event) => this.updateTitle(event.target.value)}>
-              </input>
-              <Button
-                className={classes.newNoteSubmitBtn}
-                onClick={this.newNote}>Submit
-              </Button>
-            </div> :
+              <form>
+                <input type="text"
+                  className={classes.newNoteInput}
+                  autoFocus='autofocus'
+                  placeholder="Enter note title"
+                  onKeyUp={(event) => this.updateTitle(event.target.value)}>
+                </input>
+                <Button
+                  type="submit"
+                  className={classes.newNoteSubmitBtn}
+                  onClick={this.newNote}>Submit
+                </Button>
+              </form> :
             null
           }
           <List>

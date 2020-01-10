@@ -25,6 +25,9 @@ const styles = theme => ({
       color: 'white',
       '&:hover': {
         backgroundColor: '#88a2ce'
+      },
+      '&:focus': {
+        backgroundColor: '#88a2ce'
       }
     },
     sidebarContainer: {
