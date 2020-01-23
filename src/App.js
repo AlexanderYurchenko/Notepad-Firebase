@@ -1,13 +1,31 @@
 import React from 'react';
+import { connect } from "react-redux";
+import { selectNote } from "./js/actions/index";
 import './App.css';
 import SidebarComponent from './sidebar/sidebar';
 import EditorComponent from './editor/editor';
 
 const firebase = require('firebase');
 
-class App extends React.Component {
+const mapStateToProps = state => {
+  // console.log(state);
+  return { 
+    selectedNoteIndex: state.selectedNoteIndex,
+    selectedNote: state.selectedNote,
+    notes: state.notes
+  };
+};
+
+function mapDispatchToProps(dispatch) {
+  return {
+    selectNote: (selectedNoteIndex, selectedNote) => dispatch(selectNote([selectedNoteIndex, selectedNote]))
+  };
+}
+
+class ConnectedApp extends React.Component {
   constructor() {
     super();
+    // console.log(this);
     this.state = {
       selectedNoteIndex: null,
       selectedNote: null,
@@ -15,11 +33,35 @@ class App extends React.Component {
     };
   }
 
+  componentDidMount = () => {
+    firebase
+      .firestore()
+      .collection('notes')
+      .onSnapshot(serverUpdate => {
+        const notes = serverUpdate.docs.map(_doc => {
+          const data = _doc.data();
+          data['id'] = _doc.id;
+          return data;
+        });
+        // console.log(notes);
+        this.setState({ notes: notes })
+      });
+    
+      this.setState({
+        selectedNoteIndex: this.props.selectedNoteIndex,
+        selectedNote: this.props.selectedNote,
+        // notes: this.props.notes
+      })
+      // console.log(this.state);
+  }
+
   selectNote = (note, index) => {
-    this.setState({ 
-      selectedNoteIndex: index, 
-      selectedNote: note
-    })  
+    console.log(this.props.selectNote);
+    // this.setState({ 
+    //   selectedNoteIndex: index, 
+    //   selectedNote: note
+    // })  
+    this.props.selectNote(index, note)
   }
 
   noteUpdate = (id, noteObj) => {
@@ -108,20 +150,9 @@ class App extends React.Component {
     );
   }
 
-  componentDidMount = () => {
-    firebase
-      .firestore()
-      .collection('notes')
-      .onSnapshot(serverUpdate => {
-        const notes = serverUpdate.docs.map(_doc => {
-          const data = _doc.data();
-          data['id'] = _doc.id;
-          return data;
-        });
-        // console.log(notes);
-        this.setState({ notes: notes })
-      });
-  }
-}
+  
+};
+
+const App = connect(mapStateToProps, mapDispatchToProps)(ConnectedApp);
  
 export default App;
