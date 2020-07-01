@@ -17,19 +17,19 @@ class SidebarItemComponent extends React.Component {
     }
   }
 
-  render() { 
+  render() {
     const { _index, _note, classes, selectedNoteIndex } = this.props;
     return (
       <div key={_index}>
         <ListItem
           className={classes.listItem}
           selected={selectedNoteIndex === _index}
-          
+
           alignItems='flex-start'>
             <div className={classes.underlay}
               onClick={() => this.selectNote(_note, _index)}>
             </div>
-            <div 
+            <div
               className={classes.textSection}>
                 <ListItemText
                   primary={_note.title}
@@ -47,5 +47,5 @@ class SidebarItemComponent extends React.Component {
     );
   }
 }
- 
+
 export default withStyles(styles)(SidebarItemComponent);

@@ -34,5 +34,5 @@ const styles = theme => ({
       padding: '20px'
     }
   });
-  
+
   export default styles;

@@ -5,9 +5,8 @@ const styles = theme => ({
     },
     textSection: {
       position: 'relative',
-      
       maxWidth: '85%'
-    },  
+    },
     deleteIcon: {
       position: 'absolute',
       right: '5px',
@@ -26,5 +25,5 @@ const styles = theme => ({
       zIndex: '2'
     }
   });
-  
+
   export default styles;

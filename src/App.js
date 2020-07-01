@@ -16,10 +16,10 @@ class App extends React.Component {
   }
 
   selectNote = (note, index) => {
-    this.setState({ 
-      selectedNoteIndex: index, 
+    this.setState({
+      selectedNoteIndex: index,
       selectedNote: note
-    })  
+    })
   }
 
   noteUpdate = (id, noteObj) => {
@@ -64,7 +64,7 @@ class App extends React.Component {
       notes: this.state.notes.filter(_note => _note !== note)
     })
     if (this.state.selectedNoteIndex === noteIndex) {
-      this.setState({ 
+      this.setState({
         selectedNote: null,
         selectedNoteIndex: null
       })
@@ -75,7 +75,7 @@ class App extends React.Component {
         selectedNote: null,
         selectedNoteIndex: null
       })
-    } 
+    }
 
     firebase
       .firestore()
@@ -84,10 +84,10 @@ class App extends React.Component {
       .delete();
   }
 
-  render() { 
+  render() {
     return (
       <div className="app-container">
-        <SidebarComponent 
+        <SidebarComponent
           selectedNoteIndex={this.state.selectedNoteIndex}
           notes={this.state.notes}
           deleteNote={this.deleteNote}
@@ -118,10 +118,9 @@ class App extends React.Component {
           data['id'] = _doc.id;
           return data;
         });
-        // console.log(notes);
         this.setState({ notes: notes })
       });
   }
 }
- 
+
 export default App;

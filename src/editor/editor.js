@@ -69,7 +69,7 @@ class EditorComponent extends React.Component {
     });
   }, 1500);
 
-  render() { 
+  render() {
     const { classes } = this.props;
     const { editorState, title } = this.state;
     return (
@@ -90,5 +90,5 @@ class EditorComponent extends React.Component {
     );
   }
 }
- 
+
 export default withStyles(styles)(EditorComponent);

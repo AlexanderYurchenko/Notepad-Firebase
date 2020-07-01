@@ -10,7 +10,7 @@ class SidebarComponent extends React.Component {
     super();
     this.state = {
       title: null,
-      addingNote: false      
+      addingNote: false
     };
   }
 
@@ -43,7 +43,7 @@ class SidebarComponent extends React.Component {
     this.props.deleteNote(note);
   }
 
-  render() { 
+  render() {
     const { notes, classes, selectedNoteIndex } = this.props;
 
     if (notes) {
@@ -54,7 +54,7 @@ class SidebarComponent extends React.Component {
             className={classes.newNoteBtn}>{this.state.addingNote ? 'Cancel' : 'New note'}
           </Button>
           {
-            this.state.addingNote ? 
+            this.state.addingNote ?
               <form>
                 <input type="text"
                   className={classes.newNoteInput}
@@ -95,5 +95,5 @@ class SidebarComponent extends React.Component {
     }
   }
 }
- 
+
 export default withStyles(styles)(SidebarComponent);
